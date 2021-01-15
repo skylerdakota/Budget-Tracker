@@ -1,63 +1,58 @@
 # Budget-Tracker
 
-Add functionality to our existing Budget Tracker application to allow for offline access and functionality.
+[Fitness Tracker Github Repo](https://github.com/skylerdakota/Budget-Tracker)
 
-The user will be able to add expenses and deposits to their budget with or without a connection. When entering transactions offline, they should populate the total when brought back online.
+[Fitness Tracker Deployed](https://damp-badlands-67706.herokuapp.com/)
 
-Offline Functionality:
+![Demo](public/assets/img/budget.png)
+![Demo](./public/assets/img/add.png)
+![Demo](public/assets/img/loaded.png)
 
-  * Enter deposits offline
+#### Table of Contents
 
-  * Enter expenses offline
+1. [Project Description](#project-description)
+2. [User Story](#user-story)
+3. [Installation Instructions](#installation-instructions)
+4. [Usage Information](#usage-information)
+5. [Contributor Guidelines](#contributor-guidelines)
+6. [Code of Conduct](#code-of-conduct)
+7. [License](#license)
+8. [Questions](#questions)
 
-When brought back online:
+#### Project Description
 
-  * Offline entries should be added to tracker.
+* This project is a fullstack application that tracks the users transactions when on and offline and provides visual data to track progress. The application uses node.js, express, MongoDB and mongoose.
 
-## User Story
-AS AN avid traveller
-I WANT to be able to track my withdrawals and deposits with or without a data/internet connection
-SO THAT my account balance is accurate when I am traveling
+#### User Story
 
-## Business Context
+* As a user, I want to be able to view create and track transactions and know that they will be saved when offline and uploaded once reconnected.
 
-Giving users a fast and easy way to track their money is important, but allowing them to access that information anytime is even more important. Having offline functionality is paramount to our applications success.
+#### Installation Instructions
 
+* This app requires installing the inquirer and jest npm node.js packages to run.
 
-## Acceptance Criteria
-GIVEN a user is on Budget App without an internet connection
-WHEN the user inputs a withdrawal or deposit
-THEN that will be shown on the page, and added to their transaction history when their connection is back online.
+#### Usage Information
 
-- - -
+* The application will be invoked by using the following command when in the appropriate directory:
 
-## Commit Early and Often
+```
+node server.js
+```
 
-* One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for two reasons:
+#### Contributor Guidelines
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills
+* Contributions are welcome please follow the code of conduct (see below)
 
-2. Your commit history allows you to revert your code base in the event that you need to return to a previous state
+#### Code of Conduct
 
-* Follow these guidelines for committing:
+* [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.md)
 
-  * Make single purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits
+#### License
 
-  * Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history
+* licensed under the [MIT License](Develop/LICENSE.txt)
 
-  * Don't commit half done work, for the sake of your collaborators (and your future self!)
+#### Questions
 
-  * Test your application before you commit to ensure functionality at every step in the development process
-
-* We would like you to have well over 200 commits by graduation, so commit early and often!
-
-* Deploy your application with [Heroku and MongoDB Atlas.](../04-Important/MongoAtlas-Deploy.md)
-
-## Submission on BCS
-
-* You are required to submit the following:
-
-  * the URL to the deployed application
-
-  * the URL to the Github repository
+* [Skyler Dakota's GitHub Page](http://github.com/skylerdakota)
+* skylerdakota@gmail.com
 

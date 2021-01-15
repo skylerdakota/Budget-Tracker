@@ -17,5 +17,5 @@
     "start_url": "/",
     "description": "An application that allows you to save input expenses when off and online.",
     "background_color": "#ffffff",
-    "theme_color": "#ffffff",
+    "theme_color": "#ffffff"
   }
