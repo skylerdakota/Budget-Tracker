@@ -1,48 +1,52 @@
-export function checkFordb() {
-  if (!window.db) {
-    console.log("Your browser doesn't support a stable version of db.");
-    return false;
-  }
-  return true;
-}
+let db;
 
-export function usedb(databaseName, storeName, method, object) {
-  return new Promise((resolve, reject) => {
-    const request = window.db.open(databaseName, 1);
-    let db,
-      tx,
-      store;
+const request = indexedDB.open("budget", 1);
 
     request.onupgradeneeded = function(e) {
-      const db = request.result;
-      db.createObjectStore(storeName, { keyPath: "_id" });
-    };
-
-    request.onerror = function(e) {
-      console.log("There was an error");
+      const db = e.target.result;
+      db.createObjectStore("pending", { autoincrement: true });
     };
 
     request.onsuccess = function(e) {
-      db = request.result;
-      tx = db.transaction(storeName, "readwrite");
-      store = tx.objectStore(storeName);
-
-      db.onerror = function(e) {
-        console.log("error");
-      };
-      if (method === "put") {
-        store.put(object);
-      } else if (method === "get") {
-        const all = store.getAll();
-        all.onsuccess = function() {
-          resolve(all.result);
-        };
-      } else if (method === "delete") {
-        store.delete(object._id);
+      db = e.target.result;
+      if (navigator.onLine) {
+        checkDatabase();
       }
-      tx.oncomplete = function() {
-        db.close();
-      };
     };
-  });
+
+    request.onerror = function(e) {
+      console.log("There was an error" + e.target.errorCode);
+    };
+
+function saveRecord(record) {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const store = transaction.objectStore("pending");
+  store.add(record);
 }
+
+function checkDatabase() {
+  const transaction = db.transaction(["pending"], "readwrite");
+  const store = transaction.objectStore("pending");
+  const getAll = store.getAll();
+
+  getAll.onsuccess = function() {
+    if (getAll.result.length > 0){
+      fetch("/api/transaction/bulk", {
+        method: "POST",
+        body: JSON.stringify(getAll.result),
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json"
+        }
+      })
+      .then(response => response.json())
+      .then(() => {
+        const transaction = db.transaction(["pending"], "readwrite");
+        const store = transaction.objectStore("pending");
+        store.clear();
+      });
+    }
+  };
+}
+
+window.addEventListener("online", checkDatabase);
