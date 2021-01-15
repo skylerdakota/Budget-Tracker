@@ -1,0 +1,23 @@
+{
+    "name": "Budget Tracker",
+    "short_name": "BudgetTracker",
+    "icons": [
+        {
+            "src": "/icons/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+    ],
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "/",
+    "description": "An application that allows you to save input expenses when off and online.",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "theme-color": "#ffffff"
+  }
