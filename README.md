@@ -1,12 +1,14 @@
 # Budget-Tracker
 
-[Fitness Tracker Github Repo](https://github.com/skylerdakota/Budget-Tracker)
+[Budget Tracker Github Repo](https://github.com/skylerdakota/Budget-Tracker)
 
-[Fitness Tracker Deployed](https://damp-badlands-67706.herokuapp.com/)
+[Budget Tracker Deployed](https://damp-badlands-67706.herokuapp.com/)
 
 ![Demo](public/assets/img/budget.png)
+
 ![Demo](./public/assets/img/add.png)
-![Demo](public/assets/img/loaded.png)
+
+<!-- ![Demo](public/assets/img/loaded.png) -->
 
 #### Table of Contents
 
