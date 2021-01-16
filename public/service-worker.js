@@ -60,11 +60,24 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  e.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(e.request).then(response => {
-        return response || fetch(e.request);
-      });
-    })
-  );
+//   e.respondWith(
+//     caches.open(CACHE_NAME).then(cache => {
+//       return cache.match(e.request).then(response => {
+//         return response || fetch(e.request);
+//       });
+//     })
+//   );
+e.respondWith(
+  fetch(e.request).catch(function() {
+    return caches.match(e.request).then(function(response) {
+      if (response) {
+        return response;
+      } else if (e.request.headers.get("accept").includes("text/html")) {
+        // return the cached home page for all requests for html pages
+        return caches.match("/");
+      }
+    });
+  })
+);
+
 });
